@@ -1,0 +1,15 @@
+{
+    "name": "magento-hackathon/async-index",
+    "license": "MIT",
+    "type": "magento-module",
+    "description": "This extension allows to execute the index process asyncron",
+    "authors":[
+        {
+            "name":"Daniel Fahlke aka Flyingmana",
+            "email":"flyingmana@googlemail.com"
+        },
+    ],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
