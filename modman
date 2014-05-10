@@ -1,3 +1,5 @@
 /app/code/community/Hackathon/AsyncIndex /app/code/community/Hackathon/AsyncIndex
+/app/design/adminhtml/default/default/layout/hackathon_asyncindex.xml /app/design/adminhtml/default/default/layout/
+/app/design/adminhtml/default/default/template/hackathon/* /app/design/adminhtml/default/default/template/hackathon/
 /app/etc/Hackathon_AsyncIndex.xml /app/etc/modules/Hackathon_AsyncIndex.xml
 /shell/hackathon_async_index.php /shell/hackathon_async_index.php

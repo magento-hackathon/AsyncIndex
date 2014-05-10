@@ -6,12 +6,31 @@
 		</Hackathon_AsyncIndex>
 	</modules>
 	<global>
+        <blocks>
+            <hackathon_asyncindex>
+                <class>Hackathon_AsyncIndex_Block</class>
+            </hackathon_asyncindex>
+        </blocks>
+        <helpers>
+            <hackathon_asyncindex>
+                <class>Hackathon_AsyncIndex_Helper</class>
+            </hackathon_asyncindex>
+        </helpers>
 		<models>
-			<psr0autoloader>
+			<hackathon_asyncindex>
 				<class>Hackathon_AsyncIndex_Model</class>
-			</psr0autoloader>
+			</hackathon_asyncindex>
 		</models>
 		<events>
 		</events>
 	</global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <hackathon_asyncindex>
+                    <file>hackathon_asyncindex.xml</file>
+                </hackathon_asyncindex>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>

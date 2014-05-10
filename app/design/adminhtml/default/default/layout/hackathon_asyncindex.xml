@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <adminhtml_process_list>
+        <reference name="content">
+            <block type="hackathon_asyncindex/adminhtml_process_stats" name="process_stats" template="hackathon/process_stats.phtml" />
+        </reference>
+    </adminhtml_process_list>
+</layout>
