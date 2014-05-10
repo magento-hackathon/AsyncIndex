@@ -7,7 +7,7 @@
         {
             "name":"Daniel Fahlke aka Flyingmana",
             "email":"flyingmana@googlemail.com"
-        },
+        }
     ],
     "suggest": {
         "magento-hackathon/magento-composer-installer": "*"
