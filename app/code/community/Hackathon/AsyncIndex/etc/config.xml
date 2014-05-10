@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Hackathon_AsyncIndex>
+			<version>0.0.1</version>
+		</Hackathon_AsyncIndex>
+	</modules>
+	<global>
+		<models>
+			<psr0autoloader>
+				<class>Hackathon_AsyncIndex_Model</class>
+			</psr0autoloader>
+		</models>
+		<events>
+		</events>
+	</global>
+</config>
