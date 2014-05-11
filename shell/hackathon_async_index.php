@@ -37,6 +37,9 @@ class Hackathon_AsyncIndex_Shell extends Mage_Shell_Abstract
                 //echo $process->getIndexerCode()."\n";
                 $process->setMode(Mage_Index_Model_Process::MODE_SCHEDULE);
                 $process->indexEvents();
+                if( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process)) === 0 ){
+                    $process->changeStatus(Mage_Index_Model_Process::STATUS_PENDING);
+                }
             }
             $resourceModel->commit();
             echo "Complete\n";
