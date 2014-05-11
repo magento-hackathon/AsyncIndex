@@ -30,8 +30,14 @@ class Hackathon_AsyncIndex_Shell extends Mage_Shell_Abstract
         $resourceModel->beginTransaction();
         try
         {
+            $pCollection = Mage::getSingleton('index/indexer')->getProcessesCollection();
 
-            Mage::getModel('index/process')->indexEvents();
+            /** @var Mage_Index_Model_Process $process */
+            foreach ($pCollection as $process) {
+                //echo $process->getIndexerCode()."\n";
+                $process->setMode(Mage_Index_Model_Process::MODE_SCHEDULE);
+                $process->indexEvents();
+            }
             $resourceModel->commit();
             echo "Complete\n";
         }
