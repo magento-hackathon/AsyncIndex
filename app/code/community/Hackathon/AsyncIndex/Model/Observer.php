@@ -2,7 +2,7 @@
 
 class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
 {
-    public function scheduleIndex()
+    public function schedule_index()
     {
         $scheduledJob = Mage::getModel('cron/schedule')->getCollection()
             ->addFieldToFilter('job_code', 'hackathon_asyncindex_cron')

@@ -9,8 +9,17 @@
     <table class="data">
         <?php foreach( $this->getPendingEventsPerProcess() as $code=>$count ): ?>
             <tr>
-                <td><?=$code?></td>
-                <td><?=$count?></td>
+                <td><?php echo $code; ?></td>
+                <td><?php echo $count; ?></td>
+                <td><form action="<?php
+                    echo $this->getUrl('asyncindex/asyncindex/index',
+                        array(
+                            '_current'     => true,
+                            '_secure'      => false,
+                            'process_code' => $code
+                        )
+                    );
+                    ?>"><button class="button" type="submit">schedule reindex</button></form></td>
             </tr>
         <?php endforeach; ?>
     </table>

@@ -10,9 +10,7 @@ class Hackathon_AsyncIndex_AsyncindexController extends Mage_Adminhtml_Controlle
 
     public function indexAction()
     {
-        echo "It works!";
-
-        $process = $this->getRequest()->getParams('process_code');
+        $process = $this->getRequest()->getParam('process_code');
 
         /**
          * @var Mage_Adminhtml_Model_Session $session
@@ -38,6 +36,8 @@ class Hackathon_AsyncIndex_AsyncindexController extends Mage_Adminhtml_Controlle
         {
             $session->addError( $helper->__('Reindex schedule not successful, message: %s', $e->getMessage()) );
         }
+
+        $this->_redirectUrl($this->_getRefererUrl());
     }
 
 }

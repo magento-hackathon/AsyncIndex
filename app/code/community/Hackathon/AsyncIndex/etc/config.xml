@@ -37,7 +37,7 @@
     <jobs>
       <hackathon_asyncindex_cron>
         <run>
-          <model>Hackathon_AsyncIndex_Model_Observer::scheduleIndex</model>
+          <model>hackathon_asyncindex/observer::schedule_index</model>
         </run>
       </hackathon_asyncindex_cron>
     </jobs>
@@ -49,7 +49,7 @@
           <module>Hackathon_AsyncIndex</module>
           <frontName>asyncindex</frontName>
         </args>
-        <use>standard</use>
+        <use>admin</use>
       </asyncindex>
     </routers>
   </admin>
