@@ -23,8 +23,24 @@ class Hackathon_AsyncIndex_Shell extends Mage_Shell_Abstract
     public function run()
     {
         echo "Starting Index - Process (all, only required Parts)\n";
-        Mage::getModel('index/process')->indexEvents();
-        echo "Complete\n";
+
+        /** @var $resourceModel Mage_Index_Model_Resource_Process */
+        $resourceModel = Mage::getResourceSingleton('index/process');
+
+        $resourceModel->beginTransaction();
+        try
+        {
+
+            Mage::getModel('index/process')->indexEvents();
+            $resourceModel->commit();
+            echo "Complete\n";
+        }
+        catch (Exception $e)
+        {
+            $resourceModel->rollBack();
+            throw $e;
+        }
+
     }
 
 }
