@@ -1,4 +1,17 @@
+<?php
 
-<div class="asyncindex-process-stats">
-    
+/**
+ * @var Hackathon_AsyncIndex_Block_Adminhtml_Process_Stats $this
+ */
+
+?>
+<div class="asyncindex-process-stats grid" style="width: 300px;">
+    <table class="data">
+        <?php foreach( $this->getPendingEventsPerProcess() as $code=>$count ): ?>
+            <tr>
+                <td><?=$code?></td>
+                <td><?=$count?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </div>
