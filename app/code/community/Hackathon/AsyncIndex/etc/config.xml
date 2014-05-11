@@ -33,4 +33,15 @@
             </updates>
         </layout>
     </adminhtml>
+  <admin>
+    <routers>
+      <asyncindex>
+        <args>
+          <module>Hackathon_AsyncIndex</module>
+          <frontName>asyncindex</frontName>
+        </args>
+        <use>standard</use>
+      </asyncindex>
+    </routers>
+  </admin>
 </config>
