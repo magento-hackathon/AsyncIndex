@@ -1,2 +1,4 @@
 AsyncIndex
 ==========
+
+License: MIT
