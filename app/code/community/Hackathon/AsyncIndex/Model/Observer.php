@@ -17,11 +17,18 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
             $message = json_decode($scheduledJob->getMessages(),true);
             $indexer = $message['indexerCode'];
         }
+        
+        /** @var Hackathon_AsyncIndex_Model_Manager $indexManager */
+        $indexManager = Mage::getModel('hackathon_asyncindex/manager');
 
         $indexProcess = Mage::getSingleton('index/indexer')->getProcessByCode($indexer);
 
         if ($indexProcess) {
-            $indexProcess->reindexEverything();
+            if($message['fullReindex'] === true){
+                $indexProcess->reindexEverything();
+            }else{
+                $indexManager->executePartialIndex($indexProcess);
+            }
         }
 
     }

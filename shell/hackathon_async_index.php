@@ -24,30 +24,15 @@ class Hackathon_AsyncIndex_Shell extends Mage_Shell_Abstract
     {
         echo "Starting Index - Process (all, only required Parts)\n";
 
-        /** @var $resourceModel Mage_Index_Model_Resource_Process */
-        $resourceModel = Mage::getResourceSingleton('index/process');
+        /** @var Hackathon_AsyncIndex_Model_Manager $indexManager */
+        $indexManager = Mage::getModel('hackathon_asyncindex/manager');
+        
+        
+        $pCollection = Mage::getSingleton('index/indexer')->getProcessesCollection();
 
-        $resourceModel->beginTransaction();
-        try
-        {
-            $pCollection = Mage::getSingleton('index/indexer')->getProcessesCollection();
-
-            /** @var Mage_Index_Model_Process $process */
-            foreach ($pCollection as $process) {
-                //echo $process->getIndexerCode()."\n";
-                $process->setMode(Mage_Index_Model_Process::MODE_SCHEDULE);
-                $process->indexEvents();
-                if( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process)) === 0 ){
-                    $process->changeStatus(Mage_Index_Model_Process::STATUS_PENDING);
-                }
-            }
-            $resourceModel->commit();
-            echo "Complete\n";
-        }
-        catch (Exception $e)
-        {
-            $resourceModel->rollBack();
-            throw $e;
+        /** @var Mage_Index_Model_Process $process */
+        foreach ($pCollection as $process) {
+            $indexManager->executePartialIndex($process);
         }
 
     }
