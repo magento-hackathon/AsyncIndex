@@ -14,7 +14,8 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
         $indexer = 'tag_aggregation'; //fallback - if not set this should be the fastest on every shop
 
         if ($scheduledJob->getStatus() != 'success') {
-            $indexer = intval($scheduledJob->getMessages());
+            $message = json_decode($scheduledJob->getMessages(),true);
+            $indexer = $message['indexerCode'];
         }
 
         $indexProcess = Mage::getSingleton('index/indexer')->getProcessByCode($indexer);

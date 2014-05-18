@@ -42,7 +42,13 @@ class Hackathon_AsyncIndex_Block_Adminhtml_Process_Grid extends Mage_Index_Block
                         'url'     => array('base' => 'asyncindex/asyncindex/index'),
                         'params'  => array('_current' => true, '_secure' => false),
                         'field'   => 'process'
-                    )
+                    ),
+                    array(
+                        'caption' => Mage::helper('index')->__('Schedule partial index'),
+                        'url'     => array('base' => 'asyncindex/asyncindex/schedulePartial'),
+                        'params'  => array('_current' => true, '_secure' => false),
+                        'field'   => 'process'
+                    ),
                 ),
                 'filter'    => false,
                 'sortable'  => false,
