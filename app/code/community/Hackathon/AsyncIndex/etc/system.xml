@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <system>
+            <groups>
+                <asyncindex translate="label">
+                    <label>Asynchronous Indexing</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <auto_index>
+                            <label>Enable Automatic Indexing</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </auto_index>
+                        <scheduler_cron_expr>
+                            <label>Async Indexing Crontab</label>
+                            <comment>Cron expressions. (E.g. "20 * * * *")</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </scheduler_cron_expr>
+                        <event_limit>
+                            <label>Events Limit</label>
+                            <comment>Limits the select query to the given value. If empty or 0, no limit will be set
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </event_limit>
+                    </fields>
+                </asyncindex>
+            </groups>
+        </system>
+    </sections>
+</config>
