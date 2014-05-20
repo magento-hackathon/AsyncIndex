@@ -25,12 +25,10 @@ class Hackathon_AsyncIndex_Model_Manager
 
         //Fallback for 1.6.2 installations > Undefined class constant 'MODE_SCHEDULE'
         $refl = new ReflectionClass('Mage_Index_Model_Process');
-        if ( in_array('MODE_SCHEDULE', $refl->getConstants() ) )
-        {
+        if ( in_array('MODE_SCHEDULE', $refl->getConstants() ) ) {
             $indexMode = Mage_Index_Model_Process::MODE_SCHEDULE;
         }
-        if ( in_array('MODE_SCHEDULE', $refl->getConstants() ) )
-        {
+        if ( in_array('MODE_SCHEDULE', $refl->getConstants() ) ) {
             $pendingMode = Mage_Index_Model_Process::STATUS_PENDING;
         }
 
