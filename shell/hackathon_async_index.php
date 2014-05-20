@@ -2,9 +2,13 @@
 
 //Deal with Symlink-Fuckup
 if ( file_exists('abstract.php') )
+{
     require_once('abstract.php');
+}
 else if ( file_exists(getcwd().'/'.'shell/abstract.php') )
+{
     require_once(getcwd().'/'.'shell/abstract.php');
+}
 
 /**
  * Magento Compiler Shell Script
@@ -22,7 +26,7 @@ class Hackathon_AsyncIndex_Shell extends Mage_Shell_Abstract
      */
     public function run()
     {
-        echo "Starting Index - Process (all, only required Parts)\n";
+        print "Starting Index - Process (all, only required Parts)\n";
 
         /** @var Hackathon_AsyncIndex_Model_Manager $indexManager */
         $indexManager = Mage::getModel('hackathon_asyncindex/manager');

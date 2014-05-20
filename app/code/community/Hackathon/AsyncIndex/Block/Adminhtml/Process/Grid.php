@@ -7,18 +7,26 @@ class Hackathon_AsyncIndex_Block_Adminhtml_Process_Grid extends Mage_Index_Block
     {
         parent::_afterLoadCollection();
         /** @var $process Mage_Index_Model_Process */
-        foreach ($this->_collection as $process) {
+        foreach ($this->_collection as $process)
+        {
             $process->setEventCount($process->getUnprocessedEventsCollection()->count());
         }
 
         return $this;
     }
 
+    /**
+     * Replace old Admin-Grid with shiny new one
+     * @return Mage_Index_Block_Adminhtml_Process_Grid|void
+     */
     protected function _prepareColumns()
     {
         parent::_prepareColumns();
 
+        //Drop the old button
         $this->removeColumn('action');
+
+        //Count of unindexed Data
         $this->addColumn('event_count', array(
                 'header'   => Mage::helper('index')->__('Event Count'),
                 'width'    => '80',
@@ -26,6 +34,8 @@ class Hackathon_AsyncIndex_Block_Adminhtml_Process_Grid extends Mage_Index_Block
                 'sortable' => false
             )
         );
+
+        //Reindex-Queue-Button
         $this->addColumn('action', array(
                 'header'    => Mage::helper('index')->__('Action'),
                 'width'     => '100',
