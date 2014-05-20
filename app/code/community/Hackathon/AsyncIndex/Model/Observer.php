@@ -13,8 +13,7 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
 
         $indexer = 'tag_aggregation'; //fallback - if not set this should be the fastest on every shop
 
-        if ($scheduledJob->getStatus() != 'success')
-        {
+        if ($scheduledJob->getStatus() != 'success') {
             $message = json_decode($scheduledJob->getMessages(), true);
             $indexer = $message['indexerCode'];
         }
@@ -24,14 +23,10 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
 
         $indexProcess = Mage::getSingleton('index/indexer')->getProcessByCode($indexer);
 
-        if ($indexProcess)
-        {
-            if ($message['fullReindex'] === true)
-            {
+        if ($indexProcess) {
+            if ($message['fullReindex'] === true) {
                 $indexProcess->reindexEverything();
-            }
-            else
-            {
+            } else {
                 $indexManager->executePartialIndex($indexProcess);
             }
         }
@@ -45,8 +40,7 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
     public function unprocessed_events_index()
     {
 
-        if (!Mage::getStoreConfig('system/asyncindex/auto_index'))
-        {
+        if ( !Mage::getStoreConfig('system/asyncindex/auto_index') ) {
             return null;
         }
 
@@ -59,20 +53,17 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
         {
             $pCollection = Mage::getSingleton('index/indexer')->getProcessesCollection();
             /** @var Mage_Index_Model_Process $process */
-            foreach ($pCollection as $process)
-            {
+            foreach ($pCollection as $process) {
                 $process->setMode(Mage_Index_Model_Process::MODE_SCHEDULE);
                 $eventLimit            = (int)Mage::getStoreConfig('system/asyncindex/event_limit');
                 $unprocessedColl = $process->getUnprocessedEventsCollection()->setPageSize($eventLimit);
 
                 /** @var Mage_Index_Model_Event $unprocessedEvent */
-                foreach ($unprocessedColl as $unprocessedEvent)
-                {
+                foreach ($unprocessedColl as $unprocessedEvent) {
                     $process->processEvent($unprocessedEvent);
                     $unprocessedEvent->save();
                 }
-                if ( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process) ) === 0)
-                {
+                if ( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process) ) === 0) {
                     $process->changeStatus(Mage_Index_Model_Process::STATUS_PENDING);
                 }
             }

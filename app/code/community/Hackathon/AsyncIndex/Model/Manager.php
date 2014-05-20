@@ -24,8 +24,7 @@ class Hackathon_AsyncIndex_Model_Manager
         {
             $process->setMode(Mage_Index_Model_Process::MODE_SCHEDULE);
             $process->indexEvents();
-            if ( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process)) === 0 )
-            {
+            if ( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process)) === 0 ) {
                 $process->changeStatus(Mage_Index_Model_Process::STATUS_PENDING);
             }
             $resourceModel->commit();

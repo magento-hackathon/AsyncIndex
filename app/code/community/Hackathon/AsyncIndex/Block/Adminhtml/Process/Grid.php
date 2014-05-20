@@ -7,8 +7,7 @@ class Hackathon_AsyncIndex_Block_Adminhtml_Process_Grid extends Mage_Index_Block
     {
         parent::_afterLoadCollection();
         /** @var $process Mage_Index_Model_Process */
-        foreach ($this->_collection as $process)
-        {
+        foreach ($this->_collection as $process) {
             $process->setEventCount($process->getUnprocessedEventsCollection()->count());
         }
 
