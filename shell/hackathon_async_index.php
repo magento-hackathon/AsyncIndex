@@ -1,12 +1,9 @@
 <?php
 
 //Deal with Symlink-Fuckup
-if ( file_exists('abstract.php') )
-{
+if ( file_exists('abstract.php') ) {
     require_once('abstract.php');
-}
-else if ( file_exists(getcwd().'/'.'shell/abstract.php') )
-{
+} elseif ( file_exists(getcwd().'/'.'shell/abstract.php') ) {
     require_once(getcwd().'/'.'shell/abstract.php');
 }
 
