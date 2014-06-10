@@ -7,27 +7,26 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
      */
     public function schedule_index()
     {
+        // Only one job should be running.
         $scheduledJob = Mage::getModel('cron/schedule')->getCollection()
             ->addFieldToFilter('job_code', 'hackathon_asyncindex_cron')
-            ->getLastItem();
+            ->addFieldToFilter('status', 'running')
+            ->getFirstItem();
 
-        $indexer = 'tag_aggregation'; //fallback - if not set this should be the fastest on every shop
-
-        if ($scheduledJob->getStatus() != 'success') {
-            $message = json_decode($scheduledJob->getMessages(), true);
+        $message = json_decode($scheduledJob->getMessages(), true);
+        if (isset($message['indexerCode'])) {
             $indexer = $message['indexerCode'];
-        }
-        
-        /** @var Hackathon_AsyncIndex_Model_Manager $indexManager */
-        $indexManager = Mage::getModel('hackathon_asyncindex/manager');
+            /** @var Hackathon_AsyncIndex_Model_Manager $indexManager */
+            $indexManager = Mage::getModel('hackathon_asyncindex/manager');
 
-        $indexProcess = Mage::getSingleton('index/indexer')->getProcessByCode($indexer);
+            $indexProcess = Mage::getSingleton('index/indexer')->getProcessByCode($indexer);
 
-        if ($indexProcess) {
-            if ($message['fullReindex'] === true) {
-                $indexProcess->reindexEverything();
-            } else {
-                $indexManager->executePartialIndex($indexProcess);
+            if ($indexProcess) {
+                if ($message['fullReindex'] === true) {
+                    $indexProcess->reindexEverything();
+                } else {
+                    $indexManager->executePartialIndex($indexProcess);
+                }
             }
         }
     }
