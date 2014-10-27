@@ -27,7 +27,7 @@ Installation Instructions
 {
     ...
     "require": {
-        "magento-hackathon/hackathon_asyncindex":"*"
+        "magento-hackathon/async-index":"*"
     },
     "repositories": [
 	    {
