@@ -74,4 +74,31 @@ class Hackathon_AsyncIndex_Model_Observer extends Mage_Core_Model_Abstract
             throw $e;
         }
     }
+
+    public function runIndex() {
+
+        if ( !Mage::getStoreConfig('system/asyncindex/auto_index') ) {
+            return null;
+        }
+
+        $partialIndex = Mage::getStoreConfig('system/asyncindex/partial_cron_index');
+
+        if($partialIndex) {
+
+            $indexManager = Mage::getModel('hackathon_asyncindex/manager');
+            $pCollection = Mage::getSingleton('index/indexer')->getProcessesCollection();
+
+            /** @var Mage_Index_Model_Process $process */
+            foreach ($pCollection as $process) {
+                $indexManager->executePartialIndex($process);
+            }
+
+        } else {
+
+            // run the normal indexer method
+            $this->unprocessed_events_index();
+
+        }
+
+    }
 }

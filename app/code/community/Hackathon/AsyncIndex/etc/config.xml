@@ -50,7 +50,7 @@
                     <config_path>system/asyncindex/scheduler_cron_expr</config_path>
                 </schedule>
                 <run>
-                    <model>hackathon_asyncindex/observer::unprocessed_events_index</model>
+                    <model>hackathon_asyncindex/observer::runIndex</model>
                 </run>
 
             </hackathon_asyncindex_events_cron>
