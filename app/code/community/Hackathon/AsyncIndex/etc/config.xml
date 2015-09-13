@@ -10,11 +10,6 @@
             <hackathon_asyncindex>
                 <class>Hackathon_AsyncIndex_Block</class>
             </hackathon_asyncindex>
-            <index>
-                <rewrite>
-                    <adminhtml_process_grid>Hackathon_AsyncIndex_Block_Adminhtml_Process_Grid</adminhtml_process_grid>>
-                </rewrite>
-            </index>
         </blocks>
         <helpers>
             <hackathon_asyncindex>
@@ -37,6 +32,32 @@
                 </hackathon_asyncindex>
             </updates>
         </layout>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <hackathon_asyncindex>
+                        <class>hackathon_asyncindex/observer</class>
+                        <method>extendIndexProcessGrid</method>
+                    </hackathon_asyncindex>
+                </observers>
+            </adminhtml_block_html_before>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <hackathon_asyncindex>
+                        <class>hackathon_asyncindex/observer</class>
+                        <method>prepareCollectionForGrid</method>
+                    </hackathon_asyncindex>
+                </observers>
+            </core_block_abstract_to_html_before>
+            <process_collection_load_after>
+                <observers>
+                    <hackathon_asyncindex>
+                        <class>hackathon_asyncindex/observer</class>
+                        <method>addEventCountToCollection</method>
+                    </hackathon_asyncindex>
+                </observers>
+            </process_collection_load_after>
+        </events>
     </adminhtml>
     <crontab>
         <jobs>
