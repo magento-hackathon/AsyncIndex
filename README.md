@@ -10,6 +10,14 @@ Features
 * Reindex partially (only needed parts) from shell
 * Automatic background reindexing with configurable event count and schedule
 
+
+Requirements
+------------
+
+At least Magento 1.8 as this module makes use ```Mage_Index_Model_Process::MODE_SCHEDULE``` which
+did not exist in previous versions.
+
+
 Installation Instructions
 -------------------------
 
