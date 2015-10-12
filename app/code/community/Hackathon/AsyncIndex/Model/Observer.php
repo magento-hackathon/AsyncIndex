@@ -189,6 +189,9 @@ class Hackathon_AsyncIndex_Model_Observer
             return null;
         }
 
+        $blacklistCfg = Mage::getStoreConfig('system/asyncindex/blacklist_indexes');
+        $blacklist = explode(',', $blacklistCfg);
+
         $partialIndex = Mage::getStoreConfig('system/asyncindex/partial_cron_index');
 
         if($partialIndex) {
@@ -198,6 +201,10 @@ class Hackathon_AsyncIndex_Model_Observer
 
             /** @var Mage_Index_Model_Process $process */
             foreach ($pCollection as $process) {
+                if ( in_array($process->getIndexerCode(), $blacklist) )
+                {
+                  continue;
+                }
                 $indexManager->executePartialIndex($process);
             }
 

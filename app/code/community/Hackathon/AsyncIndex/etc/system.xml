@@ -50,6 +50,15 @@
                             <show_in_store>0</show_in_store>
                             <comment>When enabled the automated cron will perform indexing using Partial Indexing</comment>
                         </partial_cron_index>
+                        <blacklist_indexes>
+                            <label>Indexcodes which shall not be processed</label>
+                            <comment>Commaseparated; e.g. "catalogsearch_fulltext,tag_summary"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blacklist_indexes>
                     </fields>
                 </asyncindex>
             </groups>
