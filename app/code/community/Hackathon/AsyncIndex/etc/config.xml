@@ -94,6 +94,7 @@
                 <auto_index>1</auto_index>
                 <scheduler_cron_expr>*/5 * * * *</scheduler_cron_expr>
                 <event_limit>100</event_limit>
+                <use_transactions>1</use_transactions>
             </asyncindex>
         </system>
     </default>
