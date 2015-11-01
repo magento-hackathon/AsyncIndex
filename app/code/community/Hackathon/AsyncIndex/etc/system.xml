@@ -53,7 +53,8 @@
                         <blacklist_indexes>
                             <label>Indexcodes which shall not be processed</label>
                             <comment>Commaseparated; e.g. "catalogsearch_fulltext,tag_summary"</comment>
-                            <frontend_type>text</frontend_type>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>hackathon_asyncindex/adminhtml_system_config_source_index</source_model>
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
