@@ -19,7 +19,7 @@ class Hackathon_AsyncIndex_Model_Manager
         /** @var $resourceModel Mage_Index_Model_Resource_Process */
         $resourceModel = Mage::getResourceSingleton('index/process');
 
-        if (Mage::getStoreConfigFlag('system/asyncindex/use_transations')) {
+        if (Mage::getStoreConfigFlag('system/asyncindex/use_transactions')) {
             $resourceModel->beginTransaction();
         }
 
@@ -39,13 +39,13 @@ class Hackathon_AsyncIndex_Model_Manager
             if ( count(Mage::getResourceSingleton('index/event')->getUnprocessedEvents($process)) === 0 ) {
                 $process->changeStatus($pendingMode);
             }
-            if (Mage::getStoreConfigFlag('system/asyncindex/use_transations')) {
+            if (Mage::getStoreConfigFlag('system/asyncindex/use_transactions')) {
                 $resourceModel->commit();
             }
         }
         catch (Exception $e)
         {
-            if (Mage::getStoreConfigFlag('system/asyncindex/use_transations')) {
+            if (Mage::getStoreConfigFlag('system/asyncindex/use_transactions')) {
                 $resourceModel->rollBack();
             }
             throw $e;
