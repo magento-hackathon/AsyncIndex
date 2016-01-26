@@ -73,7 +73,6 @@
                 <run>
                     <model>hackathon_asyncindex/observer::runIndex</model>
                 </run>
-
             </hackathon_asyncindex_events_cron>
         </jobs>
     </crontab>
@@ -86,13 +85,6 @@
                     </modules>
                 </args>
             </adminhtml>
-            <asyncindex>
-                <args>
-                    <module>Hackathon_AsyncIndex</module>
-                    <frontName>asyncindex</frontName>
-                </args>
-                <use>admin</use>
-            </asyncindex>
         </routers>
     </admin>
     <default>
