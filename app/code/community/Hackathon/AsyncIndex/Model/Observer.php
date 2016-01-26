@@ -57,13 +57,13 @@ class Hackathon_AsyncIndex_Model_Observer
                 ),
                 array(
                     'caption' => Mage::helper('index')->__('Schedule Reindex'),
-                    'url'     => array('base' => 'asyncindex/asyncindex/index'),
+                    'url'     => array('base' => 'adminhtml/asyncindex/index'),
                     'params'  => array('_current' => true, '_secure' => false),
                     'field'   => 'process'
                 ),
                 array(
                     'caption' => Mage::helper('index')->__('Schedule partial index'),
-                    'url'     => array('base' => 'asyncindex/asyncindex/schedulePartial'),
+                    'url'     => array('base' => 'adminhtml/asyncindex/schedulePartial'),
                     'params'  => array('_current' => true, '_secure' => false),
                     'field'   => 'process'
                 ),

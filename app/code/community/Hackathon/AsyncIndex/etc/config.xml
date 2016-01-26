@@ -79,6 +79,13 @@
     </crontab>
     <admin>
         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Hackathon_AsyncIndex after="Mage_Adminhtml">Hackathon_AsyncIndex_Adminhtml</Hackathon_AsyncIndex>
+                    </modules>
+                </args>
+            </adminhtml>
             <asyncindex>
                 <args>
                     <module>Hackathon_AsyncIndex</module>
