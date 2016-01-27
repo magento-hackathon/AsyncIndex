@@ -1,6 +1,6 @@
 <?php
 
-class Hackathon_AsyncIndex_AsyncindexController extends Mage_Adminhtml_Controller_Action
+class Hackathon_AsyncIndex_Adminhtml_AsyncindexController extends Mage_Adminhtml_Controller_Action
 {
 
     /**

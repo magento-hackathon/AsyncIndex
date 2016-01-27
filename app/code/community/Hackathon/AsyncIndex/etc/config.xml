@@ -73,19 +73,18 @@
                 <run>
                     <model>hackathon_asyncindex/observer::runIndex</model>
                 </run>
-
             </hackathon_asyncindex_events_cron>
         </jobs>
     </crontab>
     <admin>
         <routers>
-            <asyncindex>
+            <adminhtml>
                 <args>
-                    <module>Hackathon_AsyncIndex</module>
-                    <frontName>asyncindex</frontName>
+                    <modules>
+                        <Hackathon_AsyncIndex after="Mage_Adminhtml">Hackathon_AsyncIndex_Adminhtml</Hackathon_AsyncIndex>
+                    </modules>
                 </args>
-                <use>admin</use>
-            </asyncindex>
+            </adminhtml>
         </routers>
     </admin>
     <default>
